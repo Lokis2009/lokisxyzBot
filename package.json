@@ -1,0 +1,26 @@
+{
+  "name": "lokisxyzbot",
+  "version": "1.0.0",
+  "description": "bot for rename.dp.ua",
+  "main": "app.js",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.25.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lokis2009/lokisxyzBot.git"
+  },
+  "keywords": [
+    "rename.dp.ua"
+  ],
+  "author": "lokis.xyz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lokis2009/lokisxyzBot/issues"
+  },
+  "homepage": "https://github.com/Lokis2009/lokisxyzBot#readme"
+}
