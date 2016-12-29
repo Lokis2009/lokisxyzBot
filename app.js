@@ -3173,7 +3173,7 @@ bot.on('message', function (msg) {
 
 					if (arr[key].objects[i].oldName.toLowerCase().indexOf(chatResponce) != -1) {
 
-						bot.sendMessage(chatId, ("Стара назва:" + arr[key].objects[i].oldName + " " + "Нова назва: " + arr[key].objects[i].newName), {
+						bot.sendMessage(chatId, ("Стара назва: " + arr[key].objects[i].oldName + " " + "Нова назва: " + arr[key].objects[i].newName), {
 							caption: "I'm a bot!"
 						})
 
