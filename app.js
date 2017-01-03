@@ -1,17 +1,15 @@
-var TelegramBot = require('node-telegram-bot-api');
+var TelegramBot = require('node-telegram-bot-api'); // all requires should be in top of file
+var request = require('request');
 var token = '316403403:AAEXBWg1j2NZcR22Ccwp017Gfb5fCjWjG9w';
 var bot = new TelegramBot(token, {
 	polling: true
 });
 
-var renameJson1 = {};
-
-var request = require('request');
-
-var url = 'http://rename.dp.ua/rename.json';
+var renameJson = {};
+var URL = 'http://rename.dp.ua/rename.json'; // all constants should be in CAPS
 
 request.get({
-	url: url,
+	url: URL,
 	json: true,
 	headers: {
 		'User-Agent': 'request'
@@ -33,42 +31,30 @@ bot.on('message', function (msg) {
 
 	var chatResponce = msg.text.toLowerCase();
 	var chatId = msg.chat.id;
-
+	//var arr = renameJson; dont double variables!!!
+	var flag = 0, objects;
+	
 	console.log(msg);
 
-	var arr = renameJson;
-
-	var flag = 0;
-
-	if (chatResponce.length < 3) {
+	if (chatResponce.length < 3) { // 3 - is the "magic number", this is antipattern
 		bot.sendMessage(chatId, ("Додайте ще букв, будь ласка"))
 	} else {
-		for (var key in arr) {
-
-			if (key != "lastUpdate") {
-
-				for (var i = 0; i < arr[key].objects.length; i++) {
-
-					if (arr[key].objects[i].oldName.toLowerCase().indexOf(chatResponce) != -1) {
-
-						bot.sendMessage(chatId, ("Стара назва: " + arr[key].objects[i].oldName + " \n" + "Нова назва: " + arr[key].objects[i].newName), {
+		for (var key in  renameJson) {
+			if (key !== "lastUpdate") {
+				objects = renameJson[key].objects;
+				for (var i = 0; i < objects.length; i++) {
+					if ( objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
+					// what about collect results to one object and send it all after full search?
+						bot.sendMessage(chatId, ("Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName), {
 							caption: "I'm a bot!"
-						})
-
-						flag = flag + 1;
+						});
+						flag++;
 					}
 				};
-
-
-
 			}
 		}
-
 		if (flag === 0) {
-
 			bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
 		}
-
-
 	}
 });
