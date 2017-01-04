@@ -55,13 +55,17 @@ bot.on('message', function (msg) {
 						};
 					}
 				}
-				if (requestMsg.length === 0) {
-					bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
 
-				} else {
 
-					bot.sendMessage(chatId, requestMsg.toString());
-				}
+			}
+
+			if (requestMsg.length === 0) {
+				bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
+
+			} else {
+				
+				var requestSms = requestMsg.toString().replace(/\,/g, "");
+				bot.sendMessage(chatId, requestSms);
 			}
 		}
 	}
