@@ -33,8 +33,7 @@ bot.on('message', function (msg) {
 
 	var chatResponce = msg.text.toLowerCase();
 	var chatId = msg.chat.id;
-	var flag = 0,
-		objects;
+	var objects;
 	var requestMsg = [];
 
 	if (chatResponce === "/start") {
@@ -50,21 +49,22 @@ bot.on('message', function (msg) {
 					for (var i = 0; i < objects.length; i++) {
 						if (objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
 							// what about collect results to one object and send it all after full search? -- done!
-							requestMsg.push("Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName+ " \n"+ " \n" );
-							/*bot.sendMessage(chatId, ("Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName), {
-								caption: "I'm a bot!"
-*/
-						};
 
-						flag++;
+							requestMsg.push("Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName + " \n" + " \n");
+
+						};
 					}
-				};
+				}
+				if (requestMsg.length === 0) {
+					bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
+
+				} else {
+
+					bot.sendMessage(chatId, requestMsg.toString());
+				}
 			}
 		}
-		if (flag === 0) {
-			bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
-		} else if (requestMsg.length) {
-			bot.sendMessage(chatId, requestMsg.toString());
-		}
 	}
+
+
 });
