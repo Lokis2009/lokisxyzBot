@@ -37,7 +37,7 @@ bot.on('message', function (msg) {
 	var requestMsg = [];
 
 	if (chatResponce === "/start") {
-		bot.sendMessage(chatId, "Вiдправте стару назву, або кiлька букв для пошуку");
+		bot.sendMessage(chatId, "Вiдправте стару назву вулицi чи будь-якого обьекту, або кiлька букв для пошуку i ми пошукаемо на нову назву");
 	} else {
 
 		if (chatResponce.length < MINRESPONCELENGTH) {
