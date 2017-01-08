@@ -1,6 +1,7 @@
-var TelegramBot = require('node-telegram-bot-api'); // all requires should be in top of file
+var TelegramBot = require('node-telegram-bot-api'); 
 var request = require('request');
-var token = '316403403:AAEXBWg1j2NZcR22Ccwp017Gfb5fCjWjG9w';
+var token = '329363508:AAEP1DnJnpI-3imX2GEmVKplOO5WshxUl3c';  //old token 316403403:AAEXBWg1j2NZcR22Ccwp017Gfb5fCjWjG9w
+
 var bot = new TelegramBot(token, {
 	polling: true
 });
