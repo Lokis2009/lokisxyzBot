@@ -38,7 +38,7 @@ bot.on('message', function (msg) {
 	var requestMsg = [];
 
 	if (chatResponce === "/start") {
-		bot.sendMessage(chatId, "Вiдправте стару назву вулицi чи будь-якого обьекту, або кiлька букв для пошуку i ми пошукаемо на нову назву");
+		bot.sendMessage(chatId, "Вiдправте стару назву вулицi чи будь-якого обьекту, або кiлька букв i ми спробуємо знайти нову назву");
 	} else {
 
 		if (chatResponce.length < MINRESPONCELENGTH) {
@@ -51,7 +51,7 @@ bot.on('message', function (msg) {
 						if (objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
 							// what about collect results to one object and send it all after full search? -- done!
 
-							requestMsg.push("Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName + " \n" + " \n");
+							requestMsg.push("Район: "+renameJson[key].oldAreaName+" ("+renameJson[key].newAreaName+") \n"+"Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName + " \n" + " \n");
 
 						};
 					}
@@ -61,7 +61,7 @@ bot.on('message', function (msg) {
 			}
 
 			if (requestMsg.length === 0) {
-				bot.sendMessage(chatId, ("Нажаль, нiчого не змогли знайти (("))
+				bot.sendMessage(chatId, ("Даних про перейменування не знайдено (("))
 
 			} else {
 				
