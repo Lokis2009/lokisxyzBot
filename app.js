@@ -49,18 +49,10 @@ bot.on('message', function (msg) {
 					objects = renameJson[key].objects;
 					for (var i = 0; i < objects.length; i++) {
 						if (objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
-							// what about collect results to one object and send it all after full search? -- done!
-
-							requestMsg.push("Район: "+renameJson[key].oldAreaName+" ("+renameJson[key].newAreaName+") \n"
-								+"Стара назва: " + objects[i].oldName + " \n"
-								+ "Нова назва: " + objects[i].newName + " \n" +
-								+ "Інфо: " + objects[i].link.href + " \n"
-								+ " \n");
-
-						};
+							requestMsg.push(`Район: ${renameJson[key].oldAreaName} \n ( ${renameJson[key].newAreaName} ) \n Нова назва: ${objects[i].newName} \n <a href='objects[i].link.href'>Інфо: </a>`)
+						}
 					}
 				}
-
 
 			}
 
