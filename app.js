@@ -1,4 +1,4 @@
-var TelegramBot = require('node-telegram-bot-api'); 
+var TelegramBot = require('node-telegram-bot-api');
 var request = require('request');
 var token = '329363508:AAEP1DnJnpI-3imX2GEmVKplOO5WshxUl3c';  //old token 316403403:AAEXBWg1j2NZcR22Ccwp017Gfb5fCjWjG9w
 
@@ -51,7 +51,11 @@ bot.on('message', function (msg) {
 						if (objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
 							// what about collect results to one object and send it all after full search? -- done!
 
-							requestMsg.push("Район: "+renameJson[key].oldAreaName+" ("+renameJson[key].newAreaName+") \n"+"Стара назва: " + objects[i].oldName + " \n" + "Нова назва: " + objects[i].newName + " \n" + " \n");
+							requestMsg.push("Район: "+renameJson[key].oldAreaName+" ("+renameJson[key].newAreaName+") \n"
+								+"Стара назва: " + objects[i].oldName + " \n"
+								+ "Нова назва: " + objects[i].newName + " \n" +
+								+ "Інфо: " + objects[i].link.href + " \n"
+								+ " \n");
 
 						};
 					}
@@ -64,7 +68,7 @@ bot.on('message', function (msg) {
 				bot.sendMessage(chatId, ("Даних про перейменування не знайдено (("))
 
 			} else {
-				
+
 				var requestSms = requestMsg.toString().replace(/\,/g, "");
 				bot.sendMessage(chatId, requestSms);
 			}
