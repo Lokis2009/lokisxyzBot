@@ -49,7 +49,7 @@ bot.on('message', function (msg) {
 					objects = renameJson[key].objects;
 					for (var i = 0; i < objects.length; i++) {
 						if (objects[i].oldName.toLowerCase().indexOf(chatResponce) !== -1) {
-							requestMsg.push(`Район: ${renameJson[key].oldAreaName} \n (${renameJson[key].newAreaName} ) \n Нова назва: ${objects[i].newName} \n (${objects[i].oldName}) \n [Інфо: ](${objects[i].link.href})`)
+							requestMsg.push(`Район: ${renameJson[key].oldAreaName} \n (${renameJson[key].newAreaName} ) \n Нова назва: ${objects[i].newName} \n (${objects[i].oldName}) \n <a href='${objects[i].link.href}'>Інфо: </a>`)
 						}
 					}
 				}
@@ -62,7 +62,7 @@ bot.on('message', function (msg) {
 			} else {
 
 				var requestSms = requestMsg.toString().replace(/\,/g, "");
-				bot.sendMessage(chatId, requestSms);
+				bot.sendMessage(chatId, requestSms, {parse_mode: 'HTML'});
 			}
 		}
 	}
